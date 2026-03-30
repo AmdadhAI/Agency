@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#6e00ff",
+                        "cyber-purple": "#7000FF",
+                        "neon-cyan": "#00F0FF",
+                        "neon-green": "#4ADE80",
+                        "background-light": "#f7f5f8",
+                        "background-dark": "#0F0F13",
+                        "card-dark": "#111116",
+                    },
+                    fontFamily: {
+                        "display": ["Space Grotesk", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Space Grotesk', sans-serif; }
+        .glass-panel {
+            background: rgba(17, 17, 22, 0.8);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .hero-glow {
+            background: radial-gradient(circle at center, rgba(110, 0, 255, 0.15) 0%, transparent 70%);
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 selection:bg-primary selection:text-white">
+<!-- Top Navigation -->
+<nav class="fixed top-0 w-full z-50 glass-panel border-b border-white/10">
+<div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary text-3xl">restaurant</span>
+<span class="text-xl font-bold tracking-tighter">HOSPITALITY <span class="text-primary">SYSTEMS</span></span>
+</div>
+<div class="hidden md:flex items-center gap-10">
+<a class="text-sm font-medium hover:text-primary transition-colors" href="#">Services</a>
+<a class="text-sm font-medium hover:text-primary transition-colors" href="#">Work</a>
+<a class="text-sm font-medium hover:text-primary transition-colors" href="#">Infrastructure</a>
+<a class="text-sm font-medium hover:text-primary transition-colors" href="#">About</a>
+<button class="bg-primary hover:bg-primary/80 text-white px-6 py-2.5 rounded-lg text-sm font-bold transition-all">
+                    Get an Audit
+                </button>
+</div>
+</div>
+</nav>
+<!-- Hero Section -->
+<section class="relative min-h-screen flex flex-col items-center justify-center pt-20 px-6 overflow-hidden hero-glow">
+<div class="text-center max-w-5xl mx-auto">
+<span class="inline-block px-4 py-1.5 rounded-full bg-primary/10 border border-primary/20 text-primary text-xs font-bold uppercase tracking-widest mb-8">
+                The New Standard in Dining Tech
+            </span>
+<h1 class="text-[clamp(3rem,8vw,6rem)] font-bold leading-[1.1] tracking-tight mb-8">
+                Systems That Speak To <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-neon-cyan">Dining Intent</span>
+</h1>
+<p class="text-xl text-slate-500 dark:text-slate-400 max-w-2xl mx-auto leading-relaxed mb-12">
+                We don't sell hours. We deploy productized, AI-driven infrastructure for high-end hospitality brands that scales automatically.
+            </p>
+<div class="flex flex-col sm:flex-row gap-4 justify-center">
+<button class="bg-primary text-white px-8 py-4 rounded-lg font-bold text-lg hover:shadow-[0_0_30px_rgba(110,0,255,0.4)] transition-all">
+                    Deploy Your System
+                </button>
+<button class="glass-panel text-white px-8 py-4 rounded-lg font-bold text-lg border border-white/10 hover:bg-white/5 transition-all">
+                    Watch Demo
+                </button>
+</div>
+</div>
+</section>
+<!-- Service Block 1: Web Architecture -->
+<section class="py-24 px-6 max-w-7xl mx-auto">
+<div class="grid lg:grid-cols-2 gap-20 items-center">
+<div>
+<span class="text-neon-cyan font-mono text-sm tracking-widest uppercase mb-4 block">01. Architecture</span>
+<h2 class="text-4xl md:text-5xl font-bold mb-6">High-Converting Web Architecture</h2>
+<p class="text-slate-400 text-lg mb-10 leading-relaxed">
+                    Frictionless booking systems designed for the modern diner. We build digital front-doors that convert casual browsers into guaranteed reservations.
+                </p>
+<div class="grid grid-cols-2 gap-8">
+<div class="space-y-3">
+<span class="material-symbols-outlined text-neon-cyan text-3xl">smartphone</span>
+<h4 class="font-bold text-lg">Mobile-First Menu UI</h4>
+<p class="text-sm text-slate-500">Fast, touch-optimized browsing that feels like a native app.</p>
+</div>
+<div class="space-y-3">
+<span class="material-symbols-outlined text-neon-cyan text-3xl">sync_alt</span>
+<h4 class="font-bold text-lg">POS Integration</h4>
+<p class="text-sm text-slate-500">Real-time inventory and seating sync with Toast, Clover, and OpenTable.</p>
+</div>
+</div>
+</div>
+<div class="relative group">
+<div class="absolute inset-0 bg-neon-cyan/20 blur-[100px] rounded-full group-hover:bg-neon-cyan/30 transition-all"></div>
+<div class="relative bg-card-dark rounded-xl border border-white/10 p-4 shadow-2xl">
+<div class="aspect-video rounded-lg bg-slate-800 overflow-hidden relative">
+<div class="absolute inset-0 bg-gradient-to-br from-slate-900 to-black p-8">
+<!-- Placeholder for Desktop Dashboard -->
+<div class="w-full h-full border border-neon-cyan/30 rounded-lg p-4 flex flex-col gap-4">
+<div class="h-4 w-1/3 bg-neon-cyan/20 rounded"></div>
+<div class="grid grid-cols-3 gap-4 grow">
+<div class="bg-neon-cyan/5 border border-neon-cyan/10 rounded"></div>
+<div class="bg-neon-cyan/5 border border-neon-cyan/10 rounded"></div>
+<div class="bg-neon-cyan/5 border border-neon-cyan/10 rounded"></div>
+</div>
+</div>
+</div>
+<img class="absolute inset-0 w-full h-full object-cover opacity-20" data-alt="Luxury restaurant interior background for dashboard" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDjYynKB1JWlITG77whxdQBekfFcS_1hbsvPyzBNIebVvlyvBNc47QaPS04C9uJs-iJJWrzjfPM5hn_474J3WltW73ede-pkR0S5EJ8BVQZMjT4VPut5zy4hMk-nLD4Gymll4TeahKKxwEMPDPNHyf8HCQjIkMj7bC1eGSlJ6xNY7ftCBBBukIvAgcL6CncqGD3PpW2SdCboAXk_MjrwxaS54RQrSxlqkwEFO4ZNuTlhu6pO0XdYIDR7o6asJQntN_-KpD7kpFGuA"/>
+</div>
+<div class="absolute -bottom-10 -right-10 w-48 h-[400px] bg-card-dark rounded-3xl border border-white/20 p-2 shadow-2xl overflow-hidden rotate-6">
+<div class="h-full w-full bg-slate-900 rounded-2xl p-4 flex flex-col gap-4">
+<div class="h-8 w-8 rounded-full bg-neon-cyan/20"></div>
+<div class="space-y-2">
+<div class="h-2 w-full bg-slate-700 rounded"></div>
+<div class="h-2 w-2/3 bg-slate-700 rounded"></div>
+</div>
+<div class="grow bg-slate-800 rounded-lg"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Service Block 2: OmniSearch -->
+<section class="py-24 px-6 max-w-7xl mx-auto bg-primary/5 rounded-[4rem]">
+<div class="grid lg:grid-cols-2 gap-20 items-center">
+<div class="order-2 lg:order-1 relative">
+<div class="absolute inset-0 bg-cyber-purple/20 blur-[100px] rounded-full"></div>
+<div class="relative bg-card-dark border border-white/10 rounded-2xl p-6 aspect-square flex items-center justify-center overflow-hidden">
+<div class="w-full h-full relative" data-location="Manhattan, NY" style="">
+<div class="absolute inset-0 bg-slate-900 rounded-xl opacity-50"></div>
+<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+<div class="relative">
+<div class="absolute -inset-8 bg-cyber-purple/40 blur-2xl rounded-full"></div>
+<div class="relative bg-cyber-purple text-white size-16 rounded-full flex items-center justify-center shadow-[0_0_30px_rgba(112,0,255,0.6)]">
+<span class="material-symbols-outlined text-3xl">location_on</span>
+</div>
+</div>
+</div>
+<!-- Abstract AI Nodes -->
+<div class="absolute top-1/4 right-1/4 size-3 bg-white rounded-full shadow-[0_0_10px_white]"></div>
+<div class="absolute bottom-1/4 left-1/3 size-2 bg-cyber-purple/60 rounded-full"></div>
+<div class="absolute top-1/2 right-10 size-4 bg-neon-cyan/40 rounded-full blur-sm"></div>
+</div>
+</div>
+</div>
+<div class="order-1 lg:order-2">
+<span class="text-cyber-purple font-mono text-sm tracking-widest uppercase mb-4 block">02. Visibility</span>
+<h2 class="text-4xl md:text-5xl font-bold mb-6">OmniSearch &amp; AI Visibility</h2>
+<p class="text-slate-400 text-lg mb-10 leading-relaxed">
+                    Dominate Google Maps and AI answer engines. When someone asks GPT-4 for the "best omakase near me," we ensure your brand is the only answer.
+                </p>
+<div class="flex flex-col gap-4">
+<div class="flex items-start gap-4 p-4 rounded-xl bg-white/5 border border-white/10 hover:border-cyber-purple/50 transition-colors">
+<span class="material-symbols-outlined text-cyber-purple">search_check</span>
+<div>
+<h4 class="font-bold">Search Dominance</h4>
+<p class="text-sm text-slate-500 italic">"Rank #1 on Local Map Packs within 90 days."</p>
+</div>
+</div>
+<div class="flex items-start gap-4 p-4 rounded-xl bg-white/5 border border-white/10 hover:border-cyber-purple/50 transition-colors">
+<span class="material-symbols-outlined text-cyber-purple">psychology</span>
+<div>
+<h4 class="font-bold">AI Recommendation Engine</h4>
+<p class="text-sm text-slate-500 italic">Optimization for Perplexity, ChatGPT, and Claude.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Service Block 3: Agentic AI -->
+<section class="py-24 px-6 max-w-7xl mx-auto">
+<div class="grid lg:grid-cols-2 gap-20 items-center">
+<div>
+<span class="text-neon-green font-mono text-sm tracking-widest uppercase mb-4 block">03. Automation</span>
+<h2 class="text-4xl md:text-5xl font-bold mb-6">Agentic AI Operations</h2>
+<p class="text-slate-400 text-lg mb-10 leading-relaxed">
+                    Automate reviews and guest retention with intelligent agents. Our AI agents don't just reply; they resolve guest issues and re-engage lost customers.
+                </p>
+<ul class="space-y-4">
+<li class="flex items-center gap-3 text-slate-300">
+<span class="material-symbols-outlined text-neon-green">check_circle</span>
+                        24/7 AI Concierge for Booking Inquiries
+                    </li>
+<li class="flex items-center gap-3 text-slate-300">
+<span class="material-symbols-outlined text-neon-green">check_circle</span>
+                        Automated Review Management &amp; Response
+                    </li>
+<li class="flex items-center gap-3 text-slate-300">
+<span class="material-symbols-outlined text-neon-green">check_circle</span>
+                        Predictive Guest Loyalty Workflows
+                    </li>
+</ul>
+</div>
+<div class="relative">
+<div class="absolute inset-0 bg-neon-green/10 blur-[80px] rounded-full"></div>
+<div class="relative bg-card-dark border border-white/10 rounded-2xl p-8">
+<div class="flex items-center justify-between mb-8">
+<div class="flex items-center gap-3">
+<div class="size-3 bg-neon-green rounded-full animate-pulse"></div>
+<span class="font-mono text-xs text-slate-400">AGENT_STATUS: ACTIVE</span>
+</div>
+<span class="material-symbols-outlined text-slate-500">more_horiz</span>
+</div>
+<div class="space-y-6">
+<div class="bg-slate-800/50 p-4 rounded-lg rounded-tl-none border border-white/5 max-w-[80%]">
+<p class="text-sm text-slate-300">"Hi! I'd like to book a table for 6 tonight at 8 PM. Do you have any vegetarian options?"</p>
+</div>
+<div class="bg-neon-green/10 p-4 rounded-lg rounded-tr-none border border-neon-green/20 max-w-[80%] ml-auto text-right">
+<p class="text-sm text-neon-green">"I've checked our floor plan. We have a booth available! Our menu has 12 vegetarian plates including our signature miso-glazed eggplant. Shall I confirm the reservation?"</p>
+</div>
+<div class="h-px bg-white/10 w-full"></div>
+<div class="flex justify-between items-center text-xs text-slate-500">
+<span>Conversion Rate: 82%</span>
+<span>Resolution Time: 0.4s</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Service Block 4: Viral Content -->
+<section class="py-24 px-6 max-w-7xl mx-auto bg-background-dark overflow-hidden">
+<div class="grid lg:grid-cols-2 gap-20 items-center">
+<div class="order-2 lg:order-1 flex justify-center gap-4">
+<div class="relative w-48 h-96 bg-slate-900 rounded-[2.5rem] border-[6px] border-slate-800 shadow-2xl overflow-hidden mt-12">
+<img class="w-full h-full object-cover" data-alt="High fidelity food video still TikTok" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDjZk35rbPscluQYw8jSAyckqdAwUb5qhVk12f70n4O_5adAkol3It8YhcJpUbJs1Skm6u-l-b7s9ETLlC9THv-0dPKl-Fi-qZrfSw5JPmJcouhWMDIZarrq1NqaBoFq5s3oibqI9-2BlnXnCLworV8n0zrhFUpKAuDWimNozX6ufrdLVKiZQvXoY6AhqSjo4q8ANfhZIijlXQjcILfN-7uhRyH14zKpIYCqpQFklrcuHkpjRKrKuSSom6cgco25ooxgNmAwfgvIg"/>
+</div>
+<div class="relative w-48 h-96 bg-slate-900 rounded-[2.5rem] border-[6px] border-slate-800 shadow-2xl overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Cinematic restaurant atmosphere reel" src="https://lh3.googleusercontent.com/aida-public/AB6AXuArTamwxKq2pQSJOp4kHnNj-IDB094P55sY5gUOnpBdiDE8mVcvDzaZ7_LYgb3y_FjnG6UuItmGWoOGnkONJCMe1psrz-oL7Mra35K5C1lV-CrHraDW2veMsKRLsLJVRKvs6OoGBhvecImQQPqwzrFW1xIK1LKakM00i7yj6clyvpeT4Hx-BFn3d49IZVTIuziOoKzkHFKP3ILvYFxewcsicOeRQ35sB3AY_2GeZWU0bMBooKX97xwyUbABw7i5YVE2Mlpz-px0ng"/>
+</div>
+<div class="relative w-48 h-96 bg-slate-900 rounded-[2.5rem] border-[6px] border-slate-800 shadow-2xl overflow-hidden mt-8">
+<img class="w-full h-full object-cover" data-alt="Chef plating food close up high fidelity" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA1STbJ5t4R_PnagUOEv_xKoxKUVEPy9qbroLcSGS7g2GcCopOMbUaXL1WwE9Cg2YiLYS0T16pXGIuiIxKVycvalbw4FISqD1mMTcEARElPhkenimTyTYN0TWstGVKcSK0WKWRxH7odzZ5rcyyF0J30mCb2T3psoujaUld71cGWBc18ZJRVCloD2YSgFW5-LcYcq3qtStvjyQQE-KrckCHfYsiDnT0BeLCtTKexUETJx9C3GYgsepZ-DaV1CUJx2oRDZzMo6d6yTA"/>
+</div>
+</div>
+<div class="order-1 lg:order-2">
+<span class="text-primary font-mono text-sm tracking-widest uppercase mb-4 block">04. Creative</span>
+<h2 class="text-4xl md:text-5xl font-bold mb-6">Viral Content Production</h2>
+<p class="text-slate-400 text-lg mb-10 leading-relaxed">
+                    We capture the soul of your kitchen. High-fidelity TikTok and Reels production that stops the scroll and fills the seats.
+                </p>
+<div class="flex gap-12">
+<div>
+<div class="text-3xl font-bold mb-1">2.4M+</div>
+<div class="text-sm text-slate-500">Impressions Delivered</div>
+</div>
+<div>
+<div class="text-3xl font-bold mb-1">15k+</div>
+<div class="text-sm text-slate-500">Shares Generated</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- The Flex -->
+<section class="py-40 bg-black flex items-center justify-center text-center px-6">
+<h2 class="text-[clamp(2.5rem,6vw,5rem)] font-black uppercase tracking-tighter leading-none text-slate-800">
+            We Don't Work With <br/>
+<span class="text-white">Dentists or Plumbers.</span>
+</h2>
+</section>
+<!-- Proof Engine -->
+<section class="py-24 px-6 max-w-7xl mx-auto">
+<h3 class="text-2xl font-bold mb-12 text-center">Engineered for Results</h3>
+<div class="grid md:grid-cols-3 gap-8">
+<div class="bg-card-dark border border-white/10 p-8 rounded-2xl relative overflow-hidden group">
+<div class="absolute top-0 right-0 p-4">
+<span class="text-neon-green font-bold">+45%</span>
+</div>
+<p class="text-slate-300 italic mb-8 relative z-10">"The AI infrastructure they deployed saved us 40 hours a week in manual admin. The ROI was visible in 14 days."</p>
+<div class="flex items-center gap-4">
+<div class="size-12 rounded-full bg-slate-700 overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Headshot of a professional chef" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCnhYazPGQQ3Bzyh7V7bwsZdtxhRSpkhklZ7sGmJT8WwAoqxYVWSMrBjEnaQrsJAwGgh4OK4IcYlNttTkuWX2ixpY1afqCnrZiYxLhhtvKVD9_4XSIQO_Hxb-2B76G8N82LbKG1FJJ_iiBly1oR8ToS2Ota4RANuh2bV7f7XuGe6UhUj9DwvPlDMrNUbxWvVAdms418IlaEemAIfF4xIJAUdIayl90JckeVyH68SK1ydeQPY93coSg1mwOei99SoObskDwBtLE6dg"/>
+</div>
+<div>
+<h5 class="font-bold">Marco Rossi</h5>
+<p class="text-xs text-slate-500 uppercase">Executive Chef, L'Anima</p>
+</div>
+</div>
+</div>
+<div class="bg-card-dark border border-white/10 p-8 rounded-2xl relative overflow-hidden group">
+<div class="absolute top-0 right-0 p-4">
+<span class="text-neon-cyan font-bold">+112%</span>
+</div>
+<p class="text-slate-300 italic mb-8 relative z-10">"We went from invisible to #1 on Google Maps in Soho within two months. Our direct bookings are at an all-time high."</p>
+<div class="flex items-center gap-4">
+<div class="size-12 rounded-full bg-slate-700 overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Headshot of a restaurant owner" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCL4HsXe4_rgPAVAj3tnN6STkTRfO2LaDYxzD_Gv8aqrs821Mv_U3-EhatO9W0nmbYFwTAB7I0HBEhH-9ZZNSawfosMIOqXlE9ANOrP5qnSg6MBnSTuab5qUa6u2m6rZS77rqCJJm3opbsrgQcm3PXTJRolAdGCRz6uYIpnRJI8knMDgfE983qmHA92H5dKszTZoJiQ9p9DDSRiX9nK78hLJZM2lPUz6zibnbe2O_jqDSh-iQXkI4yQRrvZuT2uaug-pgmsZa2r2g"/>
+</div>
+<div>
+<h5 class="font-bold">Sarah Jenkins</h5>
+<p class="text-xs text-slate-500 uppercase">Owner, The Hearth</p>
+</div>
+</div>
+</div>
+<div class="bg-card-dark border border-white/10 p-8 rounded-2xl relative overflow-hidden group">
+<div class="absolute top-0 right-0 p-4">
+<span class="text-cyber-purple font-bold">+2.1M</span>
+</div>
+<p class="text-slate-300 italic mb-8 relative z-10">"The content quality is cinema-grade. Our Reels are consistently hitting over 500k views without any ad spend."</p>
+<div class="flex items-center gap-4">
+<div class="size-12 rounded-full bg-slate-700 overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Headshot of a digital marketing manager" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAuwQ95yZRsUw2fLIPXo4UZk1aqQ8jSZIt6_bk0SGBezd8GGb583JR40bUiMFAaq8yxh9Nn6WyHM7fYnTMIZ7gU-XxZoI5RpiEgavt49AD9JRcbKCpkHjm5cIrwSP78hbEWayY-o8zdtNx2ewq8Vq61NjlHJtNYfjgIb3nzs7O4cwRgLmq2sQH0PruP3qwwy1nyfSXLX9cDSsDSy01IDlOkEy5Symb6hXqp8YOZAZZG5sX9-6HlsGxDIcENqZCB41bLjB5TL9UyyQ"/>
+</div>
+<div>
+<h5 class="font-bold">Leo Zhang</h5>
+<p class="text-xs text-slate-500 uppercase">Marketing Dir, Silk Road</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Audit CTA -->
+<section class="py-24 px-6">
+<div class="max-w-4xl mx-auto glass-panel border border-primary/30 rounded-[2rem] p-12 relative overflow-hidden">
+<div class="absolute -top-24 -left-24 size-64 bg-primary/20 blur-[100px] rounded-full"></div>
+<div class="relative z-10 text-center">
+<h2 class="text-4xl font-bold mb-4">Enhance Your Brand Potential. <br/><span class="text-primary">At No Cost!</span></h2>
+<p class="text-slate-400 mb-10 max-w-xl mx-auto">Request a free infrastructure audit. We'll show you exactly where your digital leaks are and how to plug them with AI.</p>
+<form class="grid sm:grid-cols-2 gap-4 max-w-2xl mx-auto">
+<input class="bg-background-dark border border-white/10 rounded-lg px-4 py-3 focus:border-primary outline-none transition-all text-white" placeholder="Restaurant Name" type="text"/>
+<input class="bg-background-dark border border-white/10 rounded-lg px-4 py-3 focus:border-primary outline-none transition-all text-white" placeholder="Work Email" type="email"/>
+<button class="sm:col-span-2 bg-cyber-purple hover:bg-cyber-purple/80 text-white font-bold py-4 rounded-lg shadow-[0_0_20px_rgba(112,0,255,0.4)] transition-all uppercase tracking-widest text-sm">
+                        Request System Audit
+                    </button>
+</form>
+<p class="text-xs text-slate-600 mt-6">Limited to 3 new infrastructure deployments per month.</p>
+</div>
+</div>
+</section>
+<!-- Footer -->
+<footer class="py-12 px-6 border-t border-white/5">
+<div class="max-w-7xl mx-auto flex flex-col md:row justify-between items-center gap-8">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">restaurant</span>
+<span class="text-lg font-bold tracking-tighter uppercase">Hospitality Systems</span>
+</div>
+<div class="flex gap-10 text-sm text-slate-500">
+<a class="hover:text-primary" href="#">LinkedIn</a>
+<a class="hover:text-primary" href="#">Instagram</a>
+<a class="hover:text-primary" href="#">Twitter</a>
+</div>
+<p class="text-xs text-slate-600">© 2024 Hospitality Systems AI. All Rights Reserved.</p>
+</div>
+</footer>
+</body></html>

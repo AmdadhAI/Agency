@@ -1,0 +1,455 @@
+@import "tailwindcss";
+
+/* ─── Design Tokens ─── */
+@theme inline {
+  --color-primary: #00F0FF;
+  --color-secondary: #7000FF;
+  --color-neon-green: #39FF14;
+  --color-signal-green: #4ADE80;
+  --color-neon-pink: #FF00FF;
+  --color-warning: #F59E0B;
+  --color-background-dark: #050505;
+  --color-surface-dark: #121212;
+  --color-glass-border: rgba(255, 255, 255, 0.08);
+
+  /* Text hierarchy v2 */
+  --color-text-primary: #FFFFFF;
+  --color-text-secondary: #E2E8F0;
+  --color-text-body: #9CA3AF;
+  --color-text-muted: #6B7280;
+
+  --font-sans: var(--font-grift), system-ui, sans-serif;
+  --font-display: var(--font-grift), system-ui, sans-serif;
+
+  --animate-marquee: marquee 25s linear infinite;
+  --animate-blob: blob 7s infinite;
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0%);
+  }
+
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+@keyframes blob {
+  0% {
+    transform: translate(0px, 0px) scale(1);
+  }
+
+  33% {
+    transform: translate(30px, -50px) scale(1.1);
+  }
+
+  66% {
+    transform: translate(-20px, 20px) scale(0.9);
+  }
+
+  100% {
+    transform: translate(0px, 0px) scale(1);
+  }
+}
+
+/* ─── Base ─── */
+html {
+  /* scroll-behavior handled by SmoothScroll rAF component */
+  scroll-behavior: auto;
+}
+
+body {
+  background-color: #050505;
+  color: #f3f4f6;
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ─── Utility classes ─── */
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  /* IE and Edge */
+  scrollbar-width: none;
+  /* Firefox */
+}
+
+.glass-card {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+}
+
+.glass-button {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  transition: all 0.3s ease;
+}
+
+.glass-button:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: #00F0FF;
+  box-shadow: 0 0 15px rgba(0, 240, 255, 0.3);
+}
+
+.text-glow {
+  text-shadow: 0 0 20px rgba(0, 240, 255, 0.3);
+}
+
+.marquee-container {
+  mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+}
+
+/* ─── Smartphone Mockup ─── */
+.phone-mockup {
+  width: 90px;
+  height: 158px;
+  background: #0a0a0a;
+  border-radius: 18px;
+  border: 2px solid rgba(0, 240, 255, 0.35);
+  box-shadow: 0 0 28px rgba(0, 240, 255, 0.18), 0 16px 40px rgba(0, 0, 0, 0.6);
+  position: relative;
+  overflow: hidden;
+  transform: rotate(6deg);
+  flex-shrink: 0;
+}
+
+.phone-mockup::before {
+  content: '';
+  position: absolute;
+  top: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 24px;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.18);
+  border-radius: 2px;
+  z-index: 10;
+}
+
+.phone-screen {
+  position: absolute;
+  inset: 14px 4px 4px;
+  background: #070b10;
+  border-radius: 10px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  padding: 4px;
+}
+
+.phone-bar {
+  height: 7px;
+  border-radius: 3px;
+  background: rgba(255, 255, 255, 0.07);
+}
+
+.phone-bar.cyan {
+  background: rgba(0, 240, 255, 0.35);
+  width: 55%;
+}
+
+.phone-bar.short {
+  width: 40%;
+}
+
+.phone-img-block {
+  height: 30px;
+  border-radius: 4px;
+  background: linear-gradient(135deg, rgba(0, 240, 255, 0.12), rgba(112, 0, 255, 0.12));
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.phone-row {
+  display: flex;
+  gap: 3px;
+}
+
+.phone-pill {
+  flex: 1;
+  height: 14px;
+  border-radius: 6px;
+  background: rgba(0, 240, 255, 0.12);
+  border: 1px solid rgba(0, 240, 255, 0.2);
+}
+
+@keyframes float-phone {
+
+  0%,
+  100% {
+    transform: rotate(6deg) translateY(0);
+  }
+
+  50% {
+    transform: rotate(6deg) translateY(-7px);
+  }
+}
+
+.phone-float {
+  animation: float-phone 4s ease-in-out infinite;
+}
+
+/* ─── Google Business Card ─── */
+.gbp-card {
+  background: rgba(18, 18, 30, 0.78);
+  backdrop-filter: blur(14px);
+  border: 1px solid rgba(112, 0, 255, 0.3);
+  border-radius: 14px;
+  padding: 12px 14px;
+  width: 170px;
+  box-shadow: 0 8px 32px rgba(112, 0, 255, 0.15);
+}
+
+.map-pin {
+  width: 26px;
+  height: 26px;
+  border-radius: 50% 50% 50% 0;
+  background: linear-gradient(135deg, #7000FF, #00F0FF);
+  transform: rotate(-45deg);
+  position: relative;
+  flex-shrink: 0;
+}
+
+.map-pin::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 9px;
+  height: 9px;
+  background: #050505;
+  border-radius: 50%;
+}
+
+@keyframes pulse-pin {
+
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(112, 0, 255, 0.5);
+  }
+
+  50% {
+    box-shadow: 0 0 0 10px rgba(112, 0, 255, 0);
+  }
+}
+
+.pin-pulse {
+  animation: pulse-pin 2s ease-in-out infinite;
+}
+
+@keyframes float-gbp {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+.gbp-float {
+  animation: float-gbp 5s ease-in-out infinite;
+}
+
+/* ─── Glass Pills ─── */
+.glass-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  font-size: 11px;
+  font-weight: 600;
+  color: #fff;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+}
+
+@keyframes float-pill1 {
+
+  0%,
+  100% {
+    transform: translateY(0) rotate(-2deg);
+  }
+
+  50% {
+    transform: translateY(-6px) rotate(-2deg);
+  }
+}
+
+@keyframes float-pill2 {
+
+  0%,
+  100% {
+    transform: translateY(0) rotate(2deg);
+  }
+
+  50% {
+    transform: translateY(-9px) rotate(2deg);
+  }
+}
+
+.pill-float1 {
+  animation: float-pill1 3.5s ease-in-out infinite;
+}
+
+.pill-float2 {
+  animation: float-pill2 4.2s ease-in-out infinite 0.6s;
+}
+
+/* ─── Camera Viewfinder ─── */
+.viewfinder {
+  width: 72px;
+  height: 52px;
+  border: 2px dashed rgba(255, 255, 255, 0.25);
+  border-radius: 8px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.viewfinder::before,
+.viewfinder::after {
+  content: '';
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border-color: #00F0FF;
+  border-style: solid;
+}
+
+.viewfinder::before {
+  top: -2px;
+  left: -2px;
+  border-width: 2px 0 0 2px;
+  border-radius: 3px 0 0 0;
+}
+
+.viewfinder::after {
+  bottom: -2px;
+  right: -2px;
+  border-width: 0 2px 2px 0;
+  border-radius: 0 0 3px 0;
+}
+
+.rec-dot {
+  width: 7px;
+  height: 7px;
+  background: #ff3040;
+  border-radius: 50%;
+}
+
+@keyframes blink-rec {
+
+  0%,
+  49% {
+    opacity: 1;
+  }
+
+  50%,
+  100% {
+    opacity: 0;
+  }
+}
+
+.rec-blink {
+  animation: blink-rec 1.2s step-end infinite;
+}
+
+@keyframes float-cam {
+
+  0%,
+  100% {
+    transform: translateY(0) rotate(3deg);
+  }
+
+  50% {
+    transform: translateY(-8px) rotate(3deg);
+  }
+}
+
+.cam-float {
+  animation: float-cam 3.8s ease-in-out infinite 0.3s;
+}
+
+/* ─── Line Chart ─── */
+.chart-wrapper {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 260px;
+  height: 90px;
+  opacity: 0.18;
+  pointer-events: none;
+}
+
+.chart-wrapper svg {
+  width: 100%;
+  height: 100%;
+}
+
+@keyframes draw-line {
+  from {
+    stroke-dashoffset: 600;
+  }
+
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+.chart-line {
+  stroke-dasharray: 600;
+  stroke-dashoffset: 600;
+  animation: draw-line 2.5s ease-out forwards;
+}
+
+/* ─── 3D Floating Elements ─── */
+@keyframes float-3d-left {
+
+  0%,
+  100% {
+    transform: translateY(0) rotate(-5deg) scale(1);
+  }
+
+  50% {
+    transform: translateY(-20px) rotate(-2deg) scale(1.05);
+  }
+}
+
+@keyframes float-3d-right {
+
+  0%,
+  100% {
+    transform: translateY(0) rotate(5deg) scale(1);
+  }
+
+  50% {
+    transform: translateY(-20px) rotate(2deg) scale(1.05);
+  }
+}
+
+.float-3d-left {
+  animation: float-3d-left 6s ease-in-out infinite;
+}
+
+.float-3d-right {
+  animation: float-3d-right 7s ease-in-out infinite 1s;
+}

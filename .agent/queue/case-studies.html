@@ -1,0 +1,235 @@
+<html class="dark"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#7000FF",
+                        "neon-cyan": "#00F0FF",
+                        "neon-green": "#4ADE80",
+                        "background-light": "#f7f5f8",
+                        "background-dark": "#0F0F13",
+                        "card-dark": "#111116",
+                    },
+                    fontFamily: {
+                        "display": ["Space Grotesk", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "1rem",
+                        "lg": "2rem",
+                        "xl": "3rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        .glow-text {
+            text-shadow: 0 0 30px rgba(110, 0, 255, 0.4);
+        }
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .masonry-grid {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 1.5rem;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 selection:bg-primary selection:text-white">
+<!-- Top Navigation -->
+<nav class="sticky top-0 z-50 w-full border-b border-white/10 bg-background-dark/80 backdrop-blur-md">
+<div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="size-10 bg-primary rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined text-white">insights</span>
+</div>
+<span class="text-xl font-bold tracking-tight text-white uppercase tracking-widest">GrowthEngine</span>
+</div>
+<div class="hidden md:flex items-center gap-10">
+<a class="text-sm font-medium text-slate-400 hover:text-white transition-colors" href="#">Case Studies</a>
+<a class="text-sm font-medium text-slate-400 hover:text-white transition-colors" href="#">Mechanism</a>
+<a class="text-sm font-medium text-slate-400 hover:text-white transition-colors" href="#">Growth Systems</a>
+<button class="bg-primary hover:bg-primary/80 text-white px-6 py-2.5 rounded-full text-sm font-bold transition-all transform hover:scale-105">
+                    Free Audit
+                </button>
+</div>
+</div>
+</nav>
+<main class="relative overflow-hidden">
+<!-- Hero Section -->
+<section class="relative pt-24 pb-16 px-6">
+<div class="max-w-7xl mx-auto text-center">
+<h1 class="text-white font-black leading-[0.9] tracking-tighter mb-8 glow-text" style="font-size: clamp(3rem, 8vw, 6.5rem);">
+                    $12M+ TRACKED <br/>
+<span class="text-primary">REVENUE</span> GENERATED
+                </h1>
+<p class="text-xl md:text-2xl text-slate-400 max-w-3xl mx-auto font-light leading-relaxed mb-12">
+                    We don't build portfolios... We build growth systems that dominate local markets.
+                </p>
+<!-- Sticky Filter Bar -->
+<div class="sticky top-24 z-40 py-4">
+<div class="inline-flex flex-wrap items-center justify-center gap-3 p-2 rounded-full glass-panel mx-auto">
+<button class="px-6 py-2 rounded-full bg-primary text-white text-sm font-bold shadow-lg shadow-primary/20">All ROI Engines</button>
+<button class="px-6 py-2 rounded-full hover:bg-white/10 text-slate-300 text-sm font-medium transition-colors">Fine Dining</button>
+<button class="px-6 py-2 rounded-full hover:bg-white/10 text-slate-300 text-sm font-medium transition-colors">Cloud Kitchens</button>
+<button class="px-6 py-2 rounded-full hover:bg-white/10 text-slate-300 text-sm font-medium transition-colors">Bistros</button>
+<button class="px-6 py-2 rounded-full hover:bg-white/10 text-slate-300 text-sm font-medium transition-colors">Nightlife</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Proof Grid (Asymmetrical Masonry) -->
+<section class="max-w-7xl mx-auto px-6 py-12">
+<div class="masonry-grid">
+<!-- Card Type A: Viral Content (Large) -->
+<div class="col-span-12 lg:col-span-8 group relative overflow-hidden rounded-xl bg-card-dark border border-white/10 aspect-[16/10] lg:aspect-auto">
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105" data-alt="Luxury bar atmosphere with craft cocktails and dramatic lighting" style="background-image: linear-gradient(0deg, rgba(15,15,19,1) 0%, rgba(15,15,19,0.2) 50%), url('https://lh3.googleusercontent.com/aida-public/AB6AXuC06f0F94fQdWsT1DE5BMn3jqQk2I7tpGTn7q1zw1yBmXBBJpNJOb16dwuWccnjkena34GEzodhrI2hx-WjaOeBvwSsc2MEbk9nC19tBfQ1mlLr4jtDFDdtAleTfwPwtzAlRFGHVqa1yVrMXRqBv0O6c334tJEBM0B44YeO7FGYK5mohSXlF6tKQvwjls4XUdsXJqhmL4xs3PnV6soBG4p5a-UPDeaOUlynn7jZlwQEBOKTSi6uRvHqgEuvuSv3hPWTUlDmNxZiQw')"></div>
+<div class="absolute inset-0 flex items-center justify-center">
+<div class="size-20 rounded-full glass-panel flex items-center justify-center cursor-pointer group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-white text-4xl fill-1">play_arrow</span>
+</div>
+</div>
+<div class="absolute top-6 left-6 px-4 py-1.5 bg-neon-green/10 border border-neon-green/20 rounded-full">
+<span class="text-neon-green text-sm font-bold">+210% Social ROI</span>
+</div>
+<div class="absolute bottom-8 left-8 right-8">
+<p class="text-neon-cyan text-xs font-bold uppercase tracking-widest mb-2">Social Dominance</p>
+<h3 class="text-3xl font-bold text-white mb-3">Velvet Room Lounge</h3>
+<p class="text-slate-400 max-w-lg">Deployed our 15-day Viral Loop sequence resulting in fully booked weekends for 6 consecutive months without paid spend.</p>
+</div>
+</div>
+<!-- Card Type B: Data Systems (Tall) -->
+<div class="col-span-12 md:col-span-6 lg:col-span-4 group relative overflow-hidden rounded-xl bg-card-dark border border-white/10 aspect-[3/4]">
+<div class="absolute inset-0 p-8 flex flex-col justify-between">
+<div class="space-y-6">
+<div class="px-4 py-1.5 bg-neon-green/10 border border-neon-green/20 rounded-full w-fit">
+<span class="text-neon-green text-sm font-bold">#1 Local Pack</span>
+</div>
+<!-- Mockup Dashboard -->
+<div class="p-4 rounded-lg bg-black/40 border border-white/5 space-y-4">
+<div class="flex items-end gap-1 h-20">
+<div class="flex-1 bg-primary/20 rounded-t h-[40%]"></div>
+<div class="flex-1 bg-primary/40 rounded-t h-[60%]"></div>
+<div class="flex-1 bg-primary/60 rounded-t h-[80%]"></div>
+<div class="flex-1 bg-primary rounded-t h-[100%]"></div>
+</div>
+<div class="flex justify-between items-center">
+<div class="flex gap-2 items-center">
+<div class="size-2 rounded-full bg-neon-green animate-pulse"></div>
+<span class="text-[10px] text-slate-500 uppercase tracking-tighter">Live Traffic</span>
+</div>
+<span class="text-neon-green text-lg font-bold font-mono">14.2k</span>
+</div>
+</div>
+</div>
+<div>
+<p class="text-neon-cyan text-xs font-bold uppercase tracking-widest mb-2">Search Dominance</p>
+<h3 class="text-2xl font-bold text-white mb-2">The Golden Grill</h3>
+<p class="text-slate-400 text-sm">Aggressive local SEO harvest capturing 85% of 'best brunch' search volume in Manhattan's West Side.</p>
+</div>
+</div>
+</div>
+<!-- Card Type B: Delivery Growth (Tall) -->
+<div class="col-span-12 md:col-span-6 lg:col-span-4 group relative overflow-hidden rounded-xl bg-card-dark border border-white/10 aspect-[3/4]">
+<div class="absolute inset-0 bg-cover bg-center transition-opacity duration-500 opacity-40 group-hover:opacity-20" data-alt="Gourmet pizza delivery box with branding" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuA38KeTE3hg_Ibdh6MZ4ka2rAdCFmXe6yMrvSJXm3hj5NLD-VpCsxsLn4T-AOJcri3KWWDDR3unb2fhvd0YubWGzyBMtwnfQ_pAymrfaOsWYNfFbMwnt8ZBdMVd0ccg3m-dPti1aEcJC3JnxGpQNnX50Z05iHraw2uqRUWyqxBIOXB1NLWelVfhuZ-UXNu6g7eWBRgFoK9rMt_FqHxRVLAojh6MfkQKnNF235MnwqKIATeovBuOnd8hckAsY6YCOJ_DeijD-q99Rg')"></div>
+<div class="absolute inset-0 p-8 flex flex-col justify-between">
+<div class="px-4 py-1.5 bg-neon-green/10 border border-neon-green/20 rounded-full w-fit">
+<span class="text-neon-green text-sm font-bold">+$45k Monthly Revenue</span>
+</div>
+<div>
+<p class="text-neon-cyan text-xs font-bold uppercase tracking-widest mb-2">Delivery Optimization</p>
+<h3 class="text-2xl font-bold text-white mb-2">Artisan Slice Co.</h3>
+<p class="text-slate-400 text-sm">Cloud kitchen algorithm hacking and menu engineering resulting in a 4.9 star rating across all platforms.</p>
+</div>
+</div>
+</div>
+<!-- Card Type A: Fine Dining (Large) -->
+<div class="col-span-12 lg:col-span-8 group relative overflow-hidden rounded-xl bg-card-dark border border-white/10 min-h-[400px]">
+<div class="absolute inset-0 bg-cover bg-center" data-alt="Elegant restaurant interior with white tablecloths and chandeliers" style="background-image: linear-gradient(90deg, rgba(15,15,19,1) 0%, rgba(15,15,19,0.7) 100%), url('https://lh3.googleusercontent.com/aida-public/AB6AXuC1tFzbK0JHbkgicJt1jMYP89nKwYT2wYMd0c3ch0JU73sVqpn7WVPVf8UgK-rHtqK236-K8ccIXoRoLhTBvzHD59ydpVjVa6gIgT_GRAlmDY6RjCjC-zTgLsByVVM6XWuQ3aEekRB3bgJOKTYnlrfL-Bf27Dsine0yi-Y-qZxh1xlKh8pb9YMfVYIvms_3TWJWdl8iF_8BUPpmzgB3iOI9qBZ1UUalSRtk74f57ZAUYNNdZcMYL1fsSPcBNUrYcRgFeRNHyx5iCw')"></div>
+<div class="relative h-full p-8 lg:p-12 flex flex-col justify-center">
+<div class="px-4 py-1.5 bg-neon-green/10 border border-neon-green/20 rounded-full w-fit mb-6">
+<span class="text-neon-green text-sm font-bold">4.2x ROAS</span>
+</div>
+<p class="text-neon-cyan text-xs font-bold uppercase tracking-widest mb-2">Ultra-Premium Acquisition</p>
+<h3 class="text-4xl font-bold text-white mb-6">L'etoile Michelin Partner</h3>
+<p class="text-slate-400 max-w-md text-lg leading-relaxed">High-intent reservation targeting for ultra-high-net-worth individuals, increasing average order value by $85 per head.</p>
+<button class="mt-8 flex items-center gap-2 text-white font-bold group/btn">
+                            Full Breakdown 
+                            <span class="material-symbols-outlined group-hover/btn:translate-x-1 transition-transform">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Mid-Page Disruptor -->
+<section class="w-full py-24 bg-white/5 border-y border-white/10 overflow-hidden relative">
+<div class="max-w-7xl mx-auto px-6 text-center relative z-10">
+<h2 class="text-white text-3xl md:text-5xl font-black italic tracking-tighter uppercase leading-tight max-w-5xl mx-auto">
+                    We don't track <span class="text-slate-600">likes</span>, <span class="text-slate-600">impressions</span>... We track <span class="text-neon-green underline decoration-neon-green/30">seated covers</span>, average order value, and <span class="text-primary">POS swipes</span>.
+                </h2>
+</div>
+<!-- Background Decoration -->
+<div class="absolute -top-1/2 -left-1/4 size-[600px] bg-primary/20 blur-[120px] rounded-full"></div>
+<div class="absolute -bottom-1/2 -right-1/4 size-[600px] bg-neon-cyan/10 blur-[120px] rounded-full"></div>
+</section>
+<!-- Audit CTA -->
+<section class="max-w-4xl mx-auto px-6 py-32">
+<div class="p-8 md:p-16 rounded-3xl glass-panel relative overflow-hidden group">
+<div class="absolute top-0 right-0 p-12 opacity-10 group-hover:opacity-20 transition-opacity">
+<span class="material-symbols-outlined text-9xl">rocket_launch</span>
+</div>
+<div class="relative z-10">
+<h2 class="text-4xl md:text-5xl font-bold text-white mb-4">Ready for your own case study?</h2>
+<p class="text-slate-400 text-lg mb-10 max-w-xl">We're looking for 3 ambitious hospitality brands this quarter to scale using our validated growth engine.</p>
+<form class="space-y-4">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<input class="w-full bg-card-dark border border-white/10 rounded-xl px-6 py-4 text-white focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all" placeholder="Full Name" type="text"/>
+<input class="w-full bg-card-dark border border-white/10 rounded-xl px-6 py-4 text-white focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all" placeholder="Business Email" type="email"/>
+</div>
+<input class="w-full bg-card-dark border border-white/10 rounded-xl px-6 py-4 text-white focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all" placeholder="Restaurant / Group Name" type="text"/>
+<select class="w-full bg-card-dark border border-white/10 rounded-xl px-6 py-4 text-slate-400 focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all">
+<option>Current Monthly Revenue</option>
+<option>$0 - $50k</option>
+<option>$50k - $200k</option>
+<option>$200k+</option>
+</select>
+<button class="w-full bg-primary hover:shadow-[0_0_40px_rgba(110,0,255,0.4)] text-white font-black text-lg py-5 rounded-xl transition-all uppercase tracking-widest mt-4">
+                            Run Revenue Audit Now
+                        </button>
+</form>
+<p class="text-center text-slate-500 text-sm mt-6">Limited availability. We only work with brands we can guarantee results for.</p>
+</div>
+</div>
+</section>
+<!-- Footer -->
+<footer class="border-t border-white/10 py-12 px-6">
+<div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
+<div class="flex items-center gap-3">
+<div class="size-8 bg-white/10 rounded flex items-center justify-center">
+<span class="material-symbols-outlined text-white text-sm">insights</span>
+</div>
+<span class="text-lg font-bold text-white uppercase tracking-widest">GrowthEngine</span>
+</div>
+<div class="flex gap-8 text-slate-500 text-sm">
+<a class="hover:text-white transition-colors" href="#">Privacy Policy</a>
+<a class="hover:text-white transition-colors" href="#">Terms of Service</a>
+<a class="hover:text-white transition-colors" href="#">Client Login</a>
+</div>
+<p class="text-slate-600 text-sm">© 2024 ROI Proof Engine. All rights reserved.</p>
+</div>
+</footer>
+</main>
+
+```</body></html>
