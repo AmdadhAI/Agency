@@ -78,7 +78,7 @@ export default async function Home() {
         />
       </div >
 
-      <main className="relative z-10 pt-24 md:pt-32">
+      <main className="relative z-10 pt-16 md:pt-32">
         {/* ── HERO ── */}
         <HomeHero
           headline={homeData?.heroHeadline}

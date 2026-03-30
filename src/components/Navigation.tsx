@@ -15,6 +15,7 @@ const PRIMARY_LINKS = [
 
 // Links hidden inside the "More" dropdown
 const MORE_LINKS = [
+    { label: "Home", href: "/", icon: "home" },
     { label: "Blog", href: "/blog", icon: "article" },
     { label: "About Us", href: "/about", icon: "groups" },
     { label: "Contact", href: "/contact", icon: "mail" },
@@ -25,8 +26,8 @@ const MORE_LINKS = [
 const MOBILE_TABS = [
     { label: "Projects", href: "/projects", icon: "grid_view" },
     { label: "Services", href: "/services", icon: "bolt" },
-    { label: "Blog", href: "/blog", icon: "article" },
     { label: "Pricing", href: "/pricing", icon: "monetization_on" },
+    { label: "Blog", href: "/blog", icon: "article" },
 ];
 
 export default function Navigation({ globalSettings }: { globalSettings?: any }) {
@@ -187,7 +188,7 @@ export default function Navigation({ globalSettings }: { globalSettings?: any })
                         <div className="flex flex-col h-full px-6 pt-20 pb-32 overflow-y-auto">
                             <p className="text-gray-600 text-[10px] font-bold uppercase tracking-[0.3em] mb-6">Navigation</p>
                             <div className="flex flex-col gap-2">
-                                {[...PRIMARY_LINKS, ...MORE_LINKS].map((link) => (
+                                {[...MORE_LINKS].map((link) => (
                                     <Link
                                         key={`${link.href}-mobile`}
                                         href={link.href}
@@ -218,35 +219,57 @@ export default function Navigation({ globalSettings }: { globalSettings?: any })
             </AnimatePresence>
 
             {/* ── Mobile Bottom Bar ── */}
-            <div className="md:hidden fixed bottom-6 left-1/2 -translate-x-1/2 w-[calc(100%-2rem)] max-w-[420px] z-50 backdrop-blur-2xl bg-[#0A0A0A]/90 border border-white/10 rounded-full px-4 py-2 flex justify-between items-center shadow-[0_20px_40px_rgba(0,0,0,0.8)]">
+            <div className="md:hidden fixed bottom-6 left-1/2 -translate-x-1/2 w-[calc(100%-1rem)] max-w-[420px] z-50 backdrop-blur-2xl bg-[#111116]/95 border border-white/10 rounded-full px-2 py-3 grid grid-cols-5 items-center shadow-[0_20px_40px_rgba(0,0,0,0.8)]">
 
-                {(globalSettings?.mainNav || MOBILE_TABS).slice(0, 3).map((tab: any) => (
+                {/* Col 1 & 2: Left Items */}
+                {(globalSettings?.mainNav || MOBILE_TABS).slice(0, 2).map((tab: any) => (
                     <Link
                         key={tab.href}
                         href={tab.href}
                         onClick={() => setMobileMenuOpen(false)}
-                        className={`flex flex-col items-center gap-1 transition-colors ${isActive(tab.href) ? "text-[#00F0FF]" : "text-gray-500 hover:text-white"
+                        className={`flex flex-col items-center justify-center gap-1 transition-colors ${isActive(tab.href) ? "text-[#00F0FF]" : "text-gray-400 hover:text-white"
                             }`}
                     >
                         {tab.icon && <span className="material-icons-outlined text-[20px]">{tab.icon}</span>}
-                        <span className="text-[9px] uppercase tracking-wider font-mono">{tab.label}</span>
+                        <span className="text-[9px] uppercase tracking-wider font-mono opacity-80">{tab.label}</span>
                     </Link>
                 ))}
 
-                {/* Center floating bolt button */}
-                <Link
-                    href="/contact"
-                    onClick={() => setMobileMenuOpen(false)}
-                    className="relative -top-5 bg-gradient-to-tr from-cyan-500 to-purple-600 w-14 h-14 rounded-full flex items-center justify-center border-4 border-[#0F0F13] shadow-[0_0_20px_rgba(0,240,255,0.4)] text-white hover:scale-105 transition-transform"
-                >
-                    <span className="material-icons-outlined text-[24px]">bolt</span>
-                </Link>
+                {/* Col 3: Center floating Logo button */}
+                <div className="flex justify-center justify-self-center h-full items-center">
+                    <Link
+                        href="/contact"
+                        onClick={() => setMobileMenuOpen(false)}
+                        className="relative -top-6 bg-gradient-to-tr from-[#111116] to-[#1A1A24] w-16 h-16 rounded-full flex items-center justify-center border-4 border-[#0F0F13] shadow-[0_0_20px_rgba(0,240,255,0.2)] hover:scale-105 transition-transform"
+                    >
+                        <Image 
+                            src="/logo-transparent.png" 
+                            alt="RestauReach Logo" 
+                            fill 
+                            className="object-contain p-2"
+                        />
+                    </Link>
+                </div>
 
-                {/* More button */}
+                {/* Col 4: Right Item */}
+                {(globalSettings?.mainNav || MOBILE_TABS).slice(2, 3).map((tab: any) => (
+                    <Link
+                        key={tab.href}
+                        href={tab.href}
+                        onClick={() => setMobileMenuOpen(false)}
+                        className={`flex flex-col items-center justify-center gap-1 transition-colors ${isActive(tab.href) ? "text-[#00F0FF]" : "text-gray-400 hover:text-white"
+                            }`}
+                    >
+                        {tab.icon && <span className="material-icons-outlined text-[20px]">{tab.icon}</span>}
+                        <span className="text-[9px] uppercase tracking-wider font-mono opacity-80">{tab.label}</span>
+                    </Link>
+                ))}
+
+                {/* Col 5: More button */}
                 <button
                     type="button"
                     onClick={() => setMobileMenuOpen(v => !v)}
-                    className={`flex flex-col items-center gap-1 transition-colors ${mobileMenuOpen ? "text-[#00F0FF]" : "text-gray-500 hover:text-white"
+                    className={`flex flex-col items-center justify-center gap-1 transition-colors ${mobileMenuOpen ? "text-[#00F0FF]" : "text-gray-400 hover:text-white"
                         }`}
                 >
                     <motion.span
@@ -256,7 +279,7 @@ export default function Navigation({ globalSettings }: { globalSettings?: any })
                     >
                         {mobileMenuOpen ? "close" : "menu"}
                     </motion.span>
-                    <span className="text-[9px] uppercase tracking-wider font-mono">More</span>
+                    <span className="text-[9px] uppercase tracking-wider font-mono opacity-80">More</span>
                 </button>
             </div>
         </>
