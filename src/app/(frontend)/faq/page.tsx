@@ -14,5 +14,30 @@ export default async function FAQPage() {
     }`;
     const data = await client.fetch(query) || {};
 
-    return <FAQClient data={data} />;
+    const allQuestions = data.faqGroups?.flatMap((group: any) => group.questions) || [];
+    
+    const faqSchema = {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": allQuestions.map((q: any) => ({
+            "@type": "Question",
+            "name": q.question,
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": q.answer
+            }
+        }))
+    };
+
+    return (
+        <>
+            {allQuestions.length > 0 && (
+                <script
+                    type="application/ld+json"
+                    dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+                />
+            )}
+            <FAQClient data={data} />
+        </>
+    );
 }

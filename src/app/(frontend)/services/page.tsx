@@ -28,5 +28,26 @@ export default async function ServicesPage() {
         client.fetch(servicesQuery).then(res => res || [])
     ]);
 
-    return <ServicesClient pageData={pageData} servicesData={servicesData} />;
+    const serviceSchema = {
+        "@context": "https://schema.org",
+        "@graph": servicesData.map((service: any) => ({
+            "@type": "Service",
+            "name": service.title,
+            "description": service.shortDescription,
+            "provider": {
+                "@type": "Organization",
+                "@id": "https://restaureach.com/#organization"
+            }
+        }))
+    };
+
+    return (
+        <>
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }}
+            />
+            <ServicesClient pageData={pageData} servicesData={servicesData} />
+        </>
+    );
 }

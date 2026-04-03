@@ -1,5 +1,6 @@
 import React from "react";
 import Link from "next/link";
+import Image from "next/image";
 import ProvenGrowth from "@/components/ProvenGrowth";
 import Showreel from "@/components/Showreel";
 import GrowthBlueprint from "@/components/GrowthBlueprint";
@@ -127,7 +128,7 @@ export default async function Home() {
               {homeData?.trustedLogos && homeData.trustedLogos.length > 0 ? (
                 // Sanity logos
                 [...homeData.trustedLogos, ...homeData.trustedLogos, ...homeData.trustedLogos, ...homeData.trustedLogos].map((url: string, i: number) => (
-                  <img key={i} src={url} alt="Trusted Brand" className="h-8 md:h-12 w-auto object-contain" />
+                  <Image key={i} src={url} alt="Trusted Brand" width={160} height={64} className="h-8 md:h-12 w-auto object-contain" />
                 ))
               ) : (
                 // Fallback text

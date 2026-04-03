@@ -3,6 +3,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
+import Image from "next/image";
 
 // ─── Animation helpers ─────────────────────────────────────────────────────────
 
@@ -145,10 +146,10 @@ export default function ServicesClient({ pageData, servicesData }: { pageData: a
                                         // Staggered two-image design (from viral content style)
                                         <div className="flex justify-center gap-4 relative w-full items-center">
                                             <div className="relative w-32 md:w-40 h-72 md:h-80 bg-black rounded-[2rem] border-[4px] border-gray-800 shadow-2xl overflow-hidden mt-6 rotate-[-5deg] opacity-70">
-                                                <img src={s.image1Url} alt={s.title} className="w-full h-full object-cover opacity-60" />
+                                                <Image fill src={s.image1Url} alt={s.title} className="w-full h-full object-cover opacity-60" />
                                             </div>
                                             <div className="relative w-40 md:w-48 h-80 md:h-96 bg-black rounded-[2.5rem] border-[4px] border-gray-600 shadow-[0_20px_60px_rgba(0,0,0,0.8)] overflow-hidden z-10 ring-2 ring-opacity-30" style={{ '--tw-ring-color': accent } as React.CSSProperties}>
-                                                <img src={s.image2Url} alt={`${s.title} main`} className="w-full h-full object-cover" />
+                                                <Image fill src={s.image2Url} alt={`${s.title} main`} className="w-full h-full object-cover" />
                                                 <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-black/90 to-transparent pointer-events-none" />
                                             </div>
                                         </div>
@@ -156,7 +157,7 @@ export default function ServicesClient({ pageData, servicesData }: { pageData: a
                                         // Single image design
                                         <div className="relative w-full max-w-md h-80 md:h-[450px] bg-[#111116] border border-white/10 rounded-[2.5rem] shadow-2xl overflow-hidden z-10 group-hover:shadow-[0_0_40px_rgba(255,255,255,0.05)] transition-all">
                                             {s.image1Url ? (
-                                                <img src={s.image1Url} alt={s.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+                                                <Image fill src={s.image1Url} alt={s.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
                                             ) : (
                                                 <div className="w-full h-full bg-[#1A1A22] flex flex-col items-center justify-center text-gray-500 gap-4">
                                                     <span className="material-icons-outlined text-5xl opacity-50">image</span>

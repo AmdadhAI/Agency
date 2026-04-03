@@ -34,6 +34,43 @@ export default function RootLayout({
                 />
             </head>
             <body className="font-sans" suppressHydrationWarning style={{ margin: 0, padding: 0 }}>
+                {/* Global JSON-LD Schema (Organization & LocalBusiness) */}
+                <script
+                    type="application/ld+json"
+                    dangerouslySetInnerHTML={{
+                        __html: JSON.stringify({
+                            "@context": "https://schema.org",
+                            "@graph": [
+                                {
+                                    "@type": "Organization",
+                                    "@id": "https://restaureach.com/#organization",
+                                    "name": "RestauReach",
+                                    "url": "https://restaureach.com",
+                                    "logo": "https://restaureach.com/logo.png",
+                                    "description": "Premium data-driven growth systems and marketing infrastructure for the modern hospitality industry.",
+                                    "sameAs": [
+                                        "https://facebook.com/restaureach",
+                                        "https://instagram.com/restaureach"
+                                    ]
+                                },
+                                {
+                                    "@type": "LocalBusiness",
+                                    "@id": "https://restaureach.com/#localbusiness",
+                                    "name": "RestauReach",
+                                    "url": "https://restaureach.com",
+                                    "image": "https://restaureach.com/logo.png",
+                                    "telephone": "+1-800-555-0199",
+                                    "address": {
+                                        "@type": "PostalAddress",
+                                        "addressLocality": "New York",
+                                        "addressRegion": "NY",
+                                        "addressCountry": "US"
+                                    }
+                                }
+                            ]
+                        })
+                    }}
+                />
                 {children}
             </body>
         </html>
