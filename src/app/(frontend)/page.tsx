@@ -44,10 +44,39 @@ export default async function Home() {
     heroSubtext,
     primaryCtaText,
     "trustedLogos": trustedLogos[].asset->url,
-    features,
-    usps
+    marqueeTitle,
+    provenGrowthPill,
+    provenGrowthTitle,
+    blueprintTitle,
+    blueprintSubtext,
+    showreelTitle,
+    showreelSubtext,
+    whatWeDoTitle,
+    whatWeDoSubtext,
+    whyChooseUsTitle,
+    whyChooseUsSubtext,
+    pricingTitle,
+    pricingSubtext,
+    bottomCtaTitle,
+    bottomCtaSubtext,
+    provenGrowthCards,
+    blueprintSteps,
+    whatWeDoBlocks[] {
+      title,
+      description,
+      slug,
+      "image1": image1.asset->url,
+      "image2": image2.asset->url
+    },
+    whyChooseUsCards,
+    competitorRows
   }`;
   const homeData = await client.fetch(homeQuery) || {};
+
+  const pricingQuery = `*[_type == "pricingPage"][0] {
+    tiers
+  }`;
+  const pricingData = await client.fetch(pricingQuery) || {};
 
   return (
     <div className="bg-[#0F0F13] min-h-screen text-[#E2E8F0] [overflow-x:clip] font-sans">
@@ -91,7 +120,7 @@ export default async function Home() {
         {/* ── MARQUEE ── */}
         <section className="py-12" style={{ borderTop: "1px solid rgba(255,255,255,0.05)", borderBottom: "1px solid rgba(255,255,255,0.05)", background: "rgba(0,0,0,0.2)", backdropFilter: "blur(8px)" }}>
           <p className="text-[10px] sm:text-xs uppercase tracking-widest font-mono text-center text-gray-500 mb-8">
-            Trusted by data-driven brands
+            {homeData?.marqueeTitle || "Trusted by data-driven brands"}
           </p>
           <div className="marquee-container overflow-hidden flex relative w-full">
             <div className="flex whitespace-nowrap gap-16 px-8 items-center opacity-60 grayscale hover:grayscale-0 hover:opacity-100 transition-all duration-500" style={{ animation: "marquee 25s linear infinite" }}>
@@ -112,20 +141,40 @@ export default async function Home() {
 
         {/* ── PROVEN GROWTH IN HOSPITALITY (Case Studies) ── */}
         {/* Hide for now until we have projects/case studies to show */}
-        {/* <ProvenGrowth projects={projects} /> */}
+        {/* <ProvenGrowth 
+              provenGrowthCards={homeData?.provenGrowthCards}
+              pill={homeData?.provenGrowthPill}
+              title={homeData?.provenGrowthTitle}
+            /> */}
 
         {/* ── HOW IT WORKS (Neural Pathway) ── */}
-        <GrowthBlueprint features={homeData?.features} />
+        <GrowthBlueprint 
+          blueprintSteps={homeData?.blueprintSteps} 
+          title={homeData?.blueprintTitle}
+          subtext={homeData?.blueprintSubtext}
+        />
 
         {/* ── SCROLL-STOPPING VISUALS (Video Showreel / Success Stories) ── */}
         {/* Hide for now until we have more projects/case studies */}
-        {/* <Showreel /> */}
+        {/* <Showreel 
+              title={homeData?.showreelTitle}
+              subtext={homeData?.showreelSubtext}
+            /> */}
 
         {/* ── WHAT WE DO (Sticky Scroll) ── */}
-        <WhatWeDo services={services} />
+        <WhatWeDo 
+          blocks={homeData?.whatWeDoBlocks} 
+          title={homeData?.whatWeDoTitle}
+          subtext={homeData?.whatWeDoSubtext}
+        />
 
         {/* ── WHY CHOOSE US (Differentiators Grid) ── */}
-        <WhyChooseUs usps={homeData?.usps} />
+        <WhyChooseUs 
+          cards={homeData?.whyChooseUsCards} 
+          competitorRows={homeData?.competitorRows}
+          title={homeData?.whyChooseUsTitle}
+          subtext={homeData?.whyChooseUsSubtext}
+        />
 
         {/* ── PRICING ── */}
         <section id="pricing" className="py-24 relative bg-[#0F0F13] overflow-hidden">
@@ -140,111 +189,69 @@ export default async function Home() {
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-7xl mx-auto px-4 items-center">
-              {/* Tier 1: The Starter */}
-              <div className="glass-card bg-[#111116] border border-white/10 rounded-2xl p-8 flex flex-col relative z-10 backdrop-blur-xl shadow-2xl shadow-black/50 transition-all hover:bg-[#15151A] hover:-translate-y-1">
-                <h3 className="text-2xl md:text-3xl leading-snug font-semibold text-white">
-                  The Starter
-                </h3>
-                <div className="my-6">
-                  <span className="text-4xl font-extrabold text-white">$399</span>
-                  <span className="text-gray-400 text-sm ml-2">/ month</span>
-                </div>
-                <div className="text-left space-y-4 mb-8 flex-grow">
-                  <div className="flex items-center gap-3">
-                    <span className="text-cyan-400 material-icons-outlined text-sm">check</span>
-                    <span className="text-[#E2E8F0] text-sm">Basic Local SEO Setup</span>
-                  </div>
-                  <div className="flex items-center gap-3">
-                    <span className="text-cyan-400 material-icons-outlined text-sm">check</span>
-                    <span className="text-[#E2E8F0] text-sm">Social Media Strategy</span>
-                  </div>
-                  <div className="flex items-center gap-3">
-                    <span className="text-cyan-400 material-icons-outlined text-sm">check</span>
-                    <span className="text-[#E2E8F0] text-sm">1 Ad Campaign Setup</span>
-                  </div>
-                </div>
-                <Link href="/contact?tier=starter" className="w-full py-4 rounded-xl font-bold transition-all hover:scale-[1.02] bg-white/10 text-white border border-white/20 font-sans mt-auto hover:bg-white/20 text-center inline-block">
-                  Start Here
-                </Link>
-              </div>
-
-              {/* Tier 2: The Growth Engine (Most Popular) */}
-              <div className="relative flex flex-col md:scale-110 z-20">
-                {/* Opaque Card to Block Glow Bleed / Card Details */}
-                <div className="bg-[#111116] border border-cyan-500/50 rounded-2xl p-10 flex flex-col relative z-10 shadow-2xl shadow-black/50 backdrop-blur-md transition-transform h-full">
-                  <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 px-4 py-1 text-[10px] sm:text-xs uppercase tracking-widest font-mono rounded-full bg-[#00F0FF]/20 text-[#00F0FF] border border-[#00F0FF]/50 backdrop-blur-md whitespace-nowrap" style={{ boxShadow: "0 0 10px rgba(0,240,255,0.3)" }}>
-                    MOST POPULAR
-                  </div>
-                  <h3 className="text-2xl md:text-3xl leading-snug font-semibold text-white">
-                    The Growth Engine
-                  </h3>
-                  <div className="my-6">
-                    <span className="text-4xl font-extrabold text-white">$999</span>
-                    <span className="text-gray-400 text-sm ml-2">/ month</span>
-                  </div>
-                  <div className="text-left space-y-4 mb-8 flex-grow">
-                    <div className="flex items-center gap-3">
-                      <span className="text-cyan-400 material-icons-outlined text-sm">check</span>
-                      <span className="text-white text-sm font-medium">High-Converting Website Design</span>
-                    </div>
-                    <div className="flex items-center gap-3">
-                      <span className="text-cyan-400 material-icons-outlined text-sm">check</span>
-                      <span className="text-[#E2E8F0] text-sm">Full Local SEO & Schema</span>
-                    </div>
-                    <div className="flex items-center gap-3">
-                      <span className="text-cyan-400 material-icons-outlined text-sm">check</span>
-                      <span className="text-[#E2E8F0] text-sm">Social Media Mgmt (Strategy & Posts)</span>
-                    </div>
-                    <div className="flex items-center gap-3">
-                      <span className="text-cyan-400 material-icons-outlined text-sm">check</span>
-                      <span className="text-[#E2E8F0] text-sm">Content Creation & Graphics</span>
-                    </div>
-                    <div className="flex items-center gap-3">
-                      <span className="text-cyan-400 material-icons-outlined text-sm">check</span>
-                      <span className="text-[#E2E8F0] text-sm">5 Ad Campaign Setups</span>
+              {(pricingData?.tiers?.length > 0 ? pricingData.tiers : [
+                {
+                  name: "The Starter", price: "$399", isPopular: false,
+                  features: ["Basic Local SEO Setup", "Social Media Strategy", "1 Ad Campaign Setup"], ctaText: "Start Here"
+                },
+                {
+                  name: "The Growth Engine", price: "$999", isPopular: true,
+                  features: ["High-Converting Website Design", "Full Local SEO & Schema", "Social Media Mgmt (Strategy & Posts)", "Content Creation & Graphics", "5 Ad Campaign Setups"], ctaText: "Accelerate Growth"
+                },
+                {
+                  name: "Scale & Dominate", price: "$2,999", isPopular: false,
+                  features: ["Everything in Growth Engine", "Agentic AI Reputation Ops", "Professional Photo/Video Shoots", "Influencer & PR Management", "Dedicated Account Manager"], ctaText: "Dominate Market"
+                }
+              ]).map((tier: any, i: number) => (
+                tier.isPopular ? (
+                  <div key={i} className="relative flex flex-col md:scale-110 z-20">
+                    <div className="bg-[#111116] border border-cyan-500/50 rounded-2xl p-10 flex flex-col relative z-10 shadow-2xl shadow-black/50 backdrop-blur-md transition-transform h-full">
+                      <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 px-4 py-1 text-[10px] sm:text-xs uppercase tracking-widest font-mono rounded-full bg-[#00F0FF]/20 text-[#00F0FF] border border-[#00F0FF]/50 backdrop-blur-md whitespace-nowrap" style={{ boxShadow: "0 0 10px rgba(0,240,255,0.3)" }}>
+                        MOST POPULAR
+                      </div>
+                      <h3 className="text-2xl md:text-3xl leading-snug font-semibold text-white">
+                        {tier.name}
+                      </h3>
+                      <div className="my-6">
+                        <span className="text-4xl font-extrabold text-white">{tier.price}</span>
+                        {tier.price.toLowerCase() !== "custom" && <span className="text-gray-400 text-sm ml-2">/ month</span>}
+                      </div>
+                      <div className="text-left space-y-4 mb-8 flex-grow">
+                        {tier.features?.map((f: string, idx: number) => (
+                          <div key={idx} className="flex items-center gap-3">
+                            <span className="text-cyan-400 material-icons-outlined text-sm">check</span>
+                            <span className={idx === 0 ? "text-white text-sm font-medium" : "text-[#E2E8F0] text-sm"}>{f}</span>
+                          </div>
+                        ))}
+                      </div>
+                      <Link href={"/contact?tier=" + tier.name.toLowerCase().replace(" ", "")} className="w-full py-4 rounded-xl transition-all hover:scale-[1.02] mt-auto font-sans border-none bg-white text-black font-bold hover:bg-gray-200 text-center inline-block">
+                        {tier.ctaText || "Accelerate Growth"}
+                      </Link>
                     </div>
                   </div>
-                  <Link href="/contact?tier=growth" className="w-full py-4 rounded-xl transition-all hover:scale-[1.02] mt-auto font-sans border-none bg-white text-black font-bold hover:bg-gray-200 text-center inline-block">
-                    Accelerate Growth
-                  </Link>
-                </div>
-              </div>
-
-              {/* Tier 3: Scale & Dominate */}
-              <div className="glass-card bg-[#111116] border border-white/10 rounded-2xl p-8 flex flex-col relative z-10 backdrop-blur-xl transition-all hover:bg-[#15151A] hover:-translate-y-1">
-                <h3 className="text-2xl md:text-3xl leading-snug font-semibold text-white">
-                  Scale & Dominate
-                </h3>
-                <div className="my-6">
-                  <span className="text-4xl font-extrabold text-white">$2,999</span>
-                  <span className="text-gray-400 text-sm ml-2">/ month</span>
-                </div>
-                <div className="text-left space-y-4 mb-8 flex-grow">
-                  <div className="flex items-center gap-3">
-                    <span className="text-cyan-400 material-icons-outlined text-sm">check</span>
-                    <span className="text-[#E2E8F0] text-sm font-medium text-white">Everything in Growth Engine</span>
+                ) : (
+                  <div key={i} className="glass-card bg-[#111116] border border-white/10 rounded-2xl p-8 flex flex-col relative z-10 backdrop-blur-xl transition-all hover:bg-[#15151A] hover:-translate-y-1 h-full shadow-2xl shadow-black/50">
+                    <h3 className="text-2xl md:text-3xl leading-snug font-semibold text-white">
+                      {tier.name}
+                    </h3>
+                    <div className="my-6">
+                      <span className="text-4xl font-extrabold text-white">{tier.price}</span>
+                      {tier.price.toLowerCase() !== "custom" && <span className="text-gray-400 text-sm ml-2">/ month</span>}
+                    </div>
+                    <div className="text-left space-y-4 mb-8 flex-grow">
+                      {tier.features?.map((f: string, idx: number) => (
+                        <div key={idx} className="flex items-center gap-3">
+                          <span className="text-cyan-400 material-icons-outlined text-sm">check</span>
+                          <span className={idx === 0 && i !== 0 ? "text-[#E2E8F0] text-sm font-medium text-white" : "text-[#E2E8F0] text-sm"}>{f}</span>
+                        </div>
+                      ))}
+                    </div>
+                    <Link href={"/contact?tier=" + tier.name.toLowerCase().replace(" ", "")} className={`w-full py-4 rounded-xl font-bold transition-all hover:scale-[1.02] font-sans mt-auto text-center inline-block ${i === 0 ? "bg-white/10 text-white border border-white/20 hover:bg-white/20" : "bg-white text-black"}`}>
+                      {tier.ctaText || "Start Here"}
+                    </Link>
                   </div>
-                  <div className="flex items-center gap-3">
-                    <span className="text-cyan-400 material-icons-outlined text-sm">check</span>
-                    <span className="text-[#E2E8F0] text-sm">Agentic AI Reputation Ops</span>
-                  </div>
-                  <div className="flex items-center gap-3">
-                    <span className="text-cyan-400 material-icons-outlined text-sm">check</span>
-                    <span className="text-[#E2E8F0] text-sm">Professional Photo/Video Shoots</span>
-                  </div>
-                  <div className="flex items-center gap-3">
-                    <span className="text-cyan-400 material-icons-outlined text-sm">check</span>
-                    <span className="text-[#E2E8F0] text-sm">Influencer & PR Management</span>
-                  </div>
-                  <div className="flex items-center gap-3">
-                    <span className="text-cyan-400 material-icons-outlined text-sm">check</span>
-                    <span className="text-[#E2E8F0] text-sm">Dedicated Account Manager</span>
-                  </div>
-                </div>
-                <Link href="/contact?tier=dominate" className="w-full py-4 rounded-xl font-bold transition-all hover:scale-[1.02] bg-white text-black font-sans mt-auto text-center inline-block">
-                  Dominate Market
-                </Link>
-              </div>
+                )
+              ))}
             </div>
 
             {/* Tier 4: Enterprise AI Banner */}
@@ -274,11 +281,16 @@ export default async function Home() {
           <div className="absolute inset-0" style={{ background: "rgba(112,0,255,0.05)" }} />
           <div className="max-w-4xl mx-auto px-4 relative z-10 text-center">
             <h2 className="text-[clamp(2rem,5vw,3.5rem)] leading-tight tracking-tight font-bold text-white mb-8">
-              Ready to scale <br />
-              <span className="text-[#00F0FF] italic">beyond limits?</span>
+              {(homeData?.bottomCtaTitle || "Ready to scale *beyond limits?*").split('*').map((part: string, i: number) => 
+                  i % 2 !== 0 ? (
+                      <span key={i} className="text-[#00F0FF] italic">{part}</span>
+                  ) : (
+                      <React.Fragment key={i}>{part}</React.Fragment>
+                  )
+              )}
             </h2>
             <p className="text-base md:text-lg leading-relaxed text-[#E2E8F0] mb-12 max-w-2xl mx-auto">
-              We only work with restaurants ready to handle a 30% increase in order volume. If that&apos;s you, let&apos;s talk.
+              {homeData?.bottomCtaSubtext || "We only work with restaurants ready to handle a 30% increase in order volume. If that's you, let's talk."}
             </p>
             <HomeCTAForm />
           </div>

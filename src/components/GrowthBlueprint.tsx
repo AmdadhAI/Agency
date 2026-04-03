@@ -122,7 +122,15 @@ function MiniScaleChart() {
 
 // ─── MAIN COMPONENT ──────────────────────────────────────────────────────────
 
-export default function GrowthBlueprint({ features = [] }: { features?: any[] }) {
+export default function GrowthBlueprint({ 
+    blueprintSteps = [],
+    title,
+    subtext 
+}: { 
+    blueprintSteps?: any[],
+    title?: string,
+    subtext?: string 
+}) {
     const sectionRef = useRef<HTMLDivElement>(null);
     const containerRef = useRef<HTMLDivElement>(null);
     // One ref per card outer wrapper
@@ -167,9 +175,6 @@ export default function GrowthBlueprint({ features = [] }: { features?: any[] })
 
         const curve = (x1: number, y1: number, x2: number, y2: number) => {
             const my = (y1 + y2) / 2;
-            // Prevent zero-width bounding box on vertical paths.
-            // SVG filters with objectBoundingBox become invisible when bbox width = 0.
-            // A 0.5px offset keeps the path visually straight but gives the bbox width.
             const safeX2 = Math.abs(x2 - x1) < 1 ? x2 + 0.5 : x2;
             return `M ${x1} ${y1} C ${x1} ${my}, ${safeX2} ${my}, ${safeX2} ${y2}`;
         };
@@ -248,11 +253,11 @@ export default function GrowthBlueprint({ features = [] }: { features?: any[] })
     ];
 
     const cards = defaultCards.map((defaultCard, index) => {
-        const sanityFeature = features[index];
+        const step = blueprintSteps?.length === 5 ? blueprintSteps[index] : null;
         return {
             ...defaultCard,
-            title: sanityFeature?.title || defaultCard.title,
-            desc: sanityFeature?.description || defaultCard.desc,
+            title: step?.title || defaultCard.title,
+            desc: step?.description || defaultCard.desc,
         };
     });
 
@@ -291,8 +296,13 @@ export default function GrowthBlueprint({ features = [] }: { features?: any[] })
                     The Growth Blueprint
                 </h3>
                 <h2 className="text-[clamp(2rem,5vw,3.5rem)] leading-tight tracking-tight font-bold text-white mb-2">
-                    How We Engineer Revenue
+                    {title || "How We Engineer Revenue"}
                 </h2>
+                {subtext && (
+                    <p className="text-base md:text-xl leading-relaxed text-[#E2E8F0] max-w-2xl mx-auto opacity-90 mt-4">
+                        {subtext}
+                    </p>
+                )}
             </div>
 
             {/* 1-3-1 Diamond Layout Container */}

@@ -186,27 +186,30 @@ function VideoCard({ data }: { data: typeof SHOWREEL_DATA[0] }) {
     );
 }
 
-export default function Showreel() {
+export default function Showreel({
+    title,
+    subtext
+}: {
+    title?: string,
+    subtext?: string
+}) {
     const carouselRef = useRef<HTMLDivElement>(null);
-
     const isHoveredRef = useRef(false);
 
     useEffect(() => {
         const carousel = carouselRef.current;
         if (!carousel) return;
 
-        let targetScroll = carousel.scrollLeft;
-        let isAnimating = false;
         let autoScrollInterval: NodeJS.Timeout;
+        let isAnimating = false;
+        let targetScroll = carousel.scrollLeft;
 
-        // Calculate single set width
+        // Get exact width of one set of cards (including gaps)
         const getSetWidth = () => {
-            const first = carousel.children[0] as HTMLElement;
-            const nextSetFirst = carousel.children[SHOWREEL_DATA.length] as HTMLElement;
-            if (first && nextSetFirst) {
-                return nextSetFirst.offsetLeft - first.offsetLeft;
-            }
-            return 0;
+            const firstChild = carousel.children[0] as HTMLElement;
+            if (!firstChild) return 0;
+            // Gap is 24px (gap-6)
+            return (firstChild.offsetWidth + 24) * SHOWREEL_DATA.length;
         };
 
         const lerp = (start: number, end: number, factor: number) => {
@@ -215,19 +218,23 @@ export default function Showreel() {
 
         const updateScroll = () => {
             if (!carousel) return;
-            let singleSetWidth = getSetWidth();
 
-            // Handle seamless jump
-            if (singleSetWidth > 0) {
-                // If we scroll too far right
-                if (carousel.scrollLeft >= singleSetWidth * 2) {
-                    carousel.scrollLeft -= singleSetWidth;
-                    targetScroll -= singleSetWidth;
-                }
-                // If we scroll too far left
-                else if (carousel.scrollLeft <= singleSetWidth / 2) {
+            const singleSetWidth = getSetWidth();
+
+            // IF WE SCROLL PAST THE START (going left backwards)
+            if (carousel.scrollLeft <= 0 && targetScroll < 0) {
+                // Jump to the second set seamlessly
+                if (singleSetWidth > 0) {
                     carousel.scrollLeft += singleSetWidth;
                     targetScroll += singleSetWidth;
+                }
+            }
+            // IF WE SCROLL PAST THE MIDDLE (going right forwards)
+            // Once we cross the second boundary, jump back seamlessly to the first start
+            else if (carousel.scrollLeft >= singleSetWidth * 2) {
+                if (singleSetWidth > 0) {
+                    carousel.scrollLeft -= singleSetWidth;
+                    targetScroll -= singleSetWidth;
                 }
             }
 
@@ -245,20 +252,12 @@ export default function Showreel() {
         const handleWheel = (e: WheelEvent) => {
             // Trackpad swipe check (horizontal scrolling)
             if (e.deltaX !== 0 && Math.abs(e.deltaX) > Math.abs(e.deltaY)) {
-                // Keep the targetScroll synced if they swipe so it doesn't jump back
                 targetScroll = carousel.scrollLeft;
                 return;
             }
 
-            // In infinite loop mode, we never reach an "end", so we always map vertical wheel to horizontal scroll
-            // The user must move cursor outside the cards to scroll vertically.
             e.preventDefault();
-
-            // Approximate card width + gap (mobile vs desktop)
             const itemWidth = window.innerWidth < 640 ? 340 + 24 : 360 + 24;
-
-            // Map standard scroll 'click' (usually deltaY around 100) to exactly one item width
-            // For continuous movement devices (trackpads), this will scale smoothly but faster
             targetScroll += (e.deltaY / 100) * itemWidth;
 
             if (!isAnimating) {
@@ -267,7 +266,6 @@ export default function Showreel() {
             }
         };
 
-        // Sync targetScroll if user manually drags or trackpad swipes
         const handleScroll = () => {
             if (!isAnimating) {
                 targetScroll = carousel.scrollLeft;
@@ -275,7 +273,6 @@ export default function Showreel() {
         };
 
         const startAutoScroll = () => {
-            // Initialize start position strictly to the middle set
             setTimeout(() => {
                 const singleSetWidth = getSetWidth();
                 if (singleSetWidth > 0 && carousel.scrollLeft === 0) {
@@ -286,9 +283,7 @@ export default function Showreel() {
 
             autoScrollInterval = setInterval(() => {
                 if (!isHoveredRef.current && carousel) {
-                    // Approximate card width + gap (mobile vs desktop)
                     const itemWidth = window.innerWidth < 640 ? 340 + 24 : 360 + 24;
-
                     targetScroll += itemWidth;
 
                     if (!isAnimating) {
@@ -296,7 +291,7 @@ export default function Showreel() {
                         requestAnimationFrame(updateScroll);
                     }
                 }
-            }, 3500); // 3.5s interval
+            }, 3500);
         };
 
         carousel.addEventListener("wheel", handleWheel, { passive: false });
@@ -310,17 +305,28 @@ export default function Showreel() {
         };
     }, []);
 
+    const defaultTitle = "Success*Stories*";
+    const titleToUse = title || defaultTitle;
+    
     return (
         <section className="bg-[#0F0F13] py-24 relative overflow-hidden border-t border-white/5">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-12">
                 <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
                     <div>
                         <h2 className="text-[clamp(2rem,5vw,3.5rem)] leading-tight tracking-tight font-bold text-white mb-4">
-                            Success<br />
-                            <span className="italic font-light">Stories</span>
+                            {titleToUse.split('*').map((part, i) => 
+                                i % 2 !== 0 ? (
+                                    <React.Fragment key={i}>
+                                        <br />
+                                        <span className="italic font-light">{part}</span>
+                                    </React.Fragment>
+                                ) : (
+                                    <React.Fragment key={i}>{part}</React.Fragment>
+                                )
+                            )}
                         </h2>
                         <p className="text-base md:text-lg leading-relaxed text-[#E2E8F0] max-w-xl">
-                            We engineer viral, high-fidelity creative designed specifically for algorithmic disruption and physical foot traffic.
+                            {subtext || "We engineer viral, high-fidelity creative designed specifically for algorithmic disruption and physical foot traffic."}
                         </p>
                     </div>
                     <div className="shrink-0 hidden md:flex items-center gap-2 text-gray-500 text-sm font-medium">

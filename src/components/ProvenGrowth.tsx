@@ -206,7 +206,7 @@ export interface ProjectItem {
     clientIndustry?: string;
 }
 
-export default function ProvenGrowth({ projects = [] }: { projects?: ProjectItem[] }) {
+export default function ProvenGrowth({ projects = [], pill, title }: { projects?: ProjectItem[], pill?: string, title?: string }) {
     /**
      * PHASE TIMINGS (on a 450vh scroll track):
      *   0.00 → 0.05   Entry buffer   — section pins, nothing moves yet (~1 scroll)
@@ -284,10 +284,10 @@ export default function ProvenGrowth({ projects = [] }: { projects?: ProjectItem
                 <div className="text-center px-4 mb-5 shrink-0">
                     <div className="inline-flex items-center gap-2 px-4 py-1 rounded-full mb-3 border border-[#00F0FF]/30 bg-[#00F0FF]/10 text-[#00F0FF] text-[10px] sm:text-xs uppercase tracking-widest font-mono">
                         <span className="w-1.5 h-1.5 rounded-full bg-[#00F0FF] animate-pulse" />
-                        Client Success
+                        {pill || "Client Success"}
                     </div>
                     <h2 className="text-[clamp(2rem,5vw,3.5rem)] leading-tight tracking-tight font-bold text-white mb-2">
-                        Proven Growth in Hospitality
+                        {title || "Proven Growth in Hospitality"}
                     </h2>
                 </div>
 
