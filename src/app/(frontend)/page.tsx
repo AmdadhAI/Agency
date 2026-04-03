@@ -40,6 +40,7 @@ export default async function Home() {
 
   const homeQuery = `*[_type == "homePage"][0] {
     heroHeadline,
+    heroSecondaryHeadline,
     heroSubtext,
     primaryCtaText,
     "trustedLogos": trustedLogos[].asset->url,
@@ -82,6 +83,7 @@ export default async function Home() {
         {/* ── HERO ── */}
         <HomeHero
           headline={homeData?.heroHeadline}
+          secondaryHeadline={homeData?.heroSecondaryHeadline}
           subtext={homeData?.heroSubtext}
           ctaText={homeData?.primaryCtaText}
         />

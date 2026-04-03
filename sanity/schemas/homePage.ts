@@ -11,6 +11,12 @@ export default defineType({
             type: 'string',
         }),
         defineField({
+            name: 'heroSecondaryHeadline',
+            title: 'Hero Secondary Headline (e.g. "We Build *Revenue* Engines.")',
+            type: 'string',
+            description: 'Wrap a word in *asterisks* to apply the cyan/purple gradient highlight.',
+        }),
+        defineField({
             name: 'heroSubtext',
             title: 'Hero Subtext',
             type: 'text',

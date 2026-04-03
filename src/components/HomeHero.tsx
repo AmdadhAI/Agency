@@ -6,10 +6,12 @@ import Link from "next/link";
 
 export default function HomeHero({
     headline,
+    secondaryHeadline,
     subtext,
     ctaText
 }: {
     headline?: string;
+    secondaryHeadline?: string;
     subtext?: string;
     ctaText?: string;
 }) {
@@ -102,10 +104,25 @@ export default function HomeHero({
                 </motion.h1>
 
                 <motion.h2 variants={{ hidden: { opacity: 0, y: 30 }, visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] } } }} className="text-[clamp(1.6rem,5vw,3.5rem)] leading-tight tracking-tight font-bold text-white flex flex-wrap items-center justify-center gap-x-2">
-                    We Build <span className="font-serif italic text-transparent bg-clip-text bg-gradient-to-r from-[#00F0FF] to-[#7000FF]">Revenue</span> Engines.
-                    <svg className="w-5 h-5 md:w-8 md:h-8 text-[#00F0FF]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
-                    </svg>
+                    {secondaryHeadline ? (
+                        <>
+                            {secondaryHeadline.split('*').map((part, i) => 
+                                i % 2 !== 0 
+                                ? <span key={i} className="font-serif italic text-transparent bg-clip-text bg-gradient-to-r from-[#00F0FF] to-[#7000FF]">{part}</span> 
+                                : <React.Fragment key={i}>{part}</React.Fragment>
+                            )}
+                            <svg className="w-5 h-5 md:w-8 md:h-8 text-[#00F0FF] ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
+                            </svg>
+                        </>
+                    ) : (
+                        <>
+                            We Build <span className="font-serif italic text-transparent bg-clip-text bg-gradient-to-r from-[#00F0FF] to-[#7000FF]">Revenue</span> Engines.
+                            <svg className="w-5 h-5 md:w-8 md:h-8 text-[#00F0FF]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
+                            </svg>
+                        </>
+                    )}
                 </motion.h2>
 
                 <motion.p variants={{ hidden: { opacity: 0, y: 30 }, visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] } } }} className="max-w-2xl mx-auto text-[14px] md:text-lg leading-relaxed text-gray-300 md:text-[#E2E8F0]">
