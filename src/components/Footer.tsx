@@ -153,10 +153,10 @@ export default function Footer({ globalSettings }: { globalSettings?: any }) {
                     <div className="flex flex-col gap-6">
                         <h3 className="font-sans font-bold text-white text-xs uppercase tracking-[0.2em] border-l-2 border-[#00F0FF]/50 pl-3">Revenue Engines</h3>
                         <ul className="flex flex-col gap-4 text-[#9CA3AF] text-sm">
-                            <li><Link className="inline-block relative hover:text-[#00F0FF] transition-colors after:content-[''] after:absolute after:w-0 after:h-px after:bottom-0 after:left-0 after:bg-[#00F0FF] hover:after:w-full after:transition-all after:duration-300 pb-1" href="/services/website-infrastructure">Website Infrastructure</Link></li>
-                            <li><Link className="inline-block relative hover:text-[#00F0FF] transition-colors after:content-[''] after:absolute after:w-0 after:h-px after:bottom-0 after:left-0 after:bg-[#00F0FF] hover:after:w-full after:transition-all after:duration-300 pb-1" href="/services/local-search">Local Search Domination</Link></li>
-                            <li><Link className="inline-block relative hover:text-[#00F0FF] transition-colors after:content-[''] after:absolute after:w-0 after:h-px after:bottom-0 after:left-0 after:bg-[#00F0FF] hover:after:w-full after:transition-all after:duration-300 pb-1" href="/services/paid-acquisition">Paid Acquisition Systems</Link></li>
-                            <li><Link className="inline-block relative hover:text-[#00F0FF] transition-colors after:content-[''] after:absolute after:w-0 after:h-px after:bottom-0 after:left-0 after:bg-[#00F0FF] hover:after:w-full after:transition-all after:duration-300 pb-1" href="/services/ai-operations">AI Operations</Link></li>
+                            <li><Link className="inline-block relative hover:text-[#00F0FF] transition-colors after:content-[''] after:absolute after:w-0 after:h-px after:bottom-0 after:left-0 after:bg-[#00F0FF] hover:after:w-full after:transition-all after:duration-300 pb-1" href="/services">Website Infrastructure</Link></li>
+                            <li><Link className="inline-block relative hover:text-[#00F0FF] transition-colors after:content-[''] after:absolute after:w-0 after:h-px after:bottom-0 after:left-0 after:bg-[#00F0FF] hover:after:w-full after:transition-all after:duration-300 pb-1" href="/services">Local Search Domination</Link></li>
+                            <li><Link className="inline-block relative hover:text-[#00F0FF] transition-colors after:content-[''] after:absolute after:w-0 after:h-px after:bottom-0 after:left-0 after:bg-[#00F0FF] hover:after:w-full after:transition-all after:duration-300 pb-1" href="/services">Paid Acquisition Systems</Link></li>
+                            <li><Link className="inline-block relative hover:text-[#00F0FF] transition-colors after:content-[''] after:absolute after:w-0 after:h-px after:bottom-0 after:left-0 after:bg-[#00F0FF] hover:after:w-full after:transition-all after:duration-300 pb-1" href="/services">AI Operations</Link></li>
                         </ul>
                     </div>
 
@@ -175,9 +175,9 @@ export default function Footer({ globalSettings }: { globalSettings?: any }) {
                     <div className="flex flex-col gap-6">
                         <h3 className="font-sans font-bold text-white text-xs uppercase tracking-[0.2em] border-l-2 border-white/20 pl-3">Resources</h3>
                         <ul className="flex flex-col gap-4 text-[#9CA3AF] text-sm">
-                            <li><Link className="hover:text-white transition-colors" href="/insights">Insights</Link></li>
-                            <li><Link className="hover:text-white transition-colors" href="/guide">Hospitality Growth Guide</Link></li>
-                            <li><Link className="hover:text-white transition-colors" href="/playbook">Restaurant Marketing Playbook</Link></li>
+                            <li><Link className="hover:text-white transition-colors" href="/blog">Insights</Link></li>
+                            <li><Link className="hover:text-white transition-colors" href="/blog">Hospitality Growth Guide</Link></li>
+                            <li><Link className="hover:text-white transition-colors" href="/blog">Restaurant Marketing Playbook</Link></li>
                             <li><Link className="hover:text-white transition-colors" href="/faq">FAQ</Link></li>
                         </ul>
                     </div>
@@ -201,30 +201,30 @@ export default function Footer({ globalSettings }: { globalSettings?: any }) {
 
                 {/* Section 3 — Authority Strip */}
                 <section className="py-12 border-y border-white/5 mt-8 flex flex-wrap justify-center items-center gap-8 md:gap-16">
-                    <a href="#" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 text-[#9CA3AF] hover:text-white transition-colors duration-300 group cursor-pointer">
+                    <Link href="/contact" className="flex items-center gap-3 text-[#9CA3AF] hover:text-white transition-colors duration-300 group cursor-pointer">
                         <div className="w-10 h-10 rounded-xl bg-[#111116] border border-white/10 flex items-center justify-center group-hover:border-white/30 transition-colors shadow-lg">
                             <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4" /><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853" /><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05" /><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335" /></svg>
                         </div>
                         <span className="font-sans font-bold text-sm tracking-wide">Google Reviews</span>
-                    </a>
-                    <a href="#" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 text-[#9CA3AF] hover:text-[#00F0FF] transition-colors duration-300 group cursor-pointer">
+                    </Link>
+                    <Link href="/contact" className="flex items-center gap-3 text-[#9CA3AF] hover:text-[#00F0FF] transition-colors duration-300 group cursor-pointer">
                         <div className="w-10 h-10 rounded-xl bg-[#111116] border border-white/10 flex items-center justify-center group-hover:border-[#00F0FF]/30 transition-colors shadow-lg">
                             <svg className="w-5 h-5 text-current" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 15h-2v-6h2v6zm-1-7c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1zm5 7h-2v-4c0-.55-.45-1-1-1s-1 .45-1 1v4h-2v-6h2v1.1c.28-.5.98-1.1 1.5-1.1 1.38 0 2.5 1.12 2.5 2.5V17z" /></svg>
                         </div>
                         <span className="font-sans font-bold text-sm tracking-wide">Meta Ads Partner</span>
-                    </a>
-                    <a href="#" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 text-[#9CA3AF] hover:text-[#7000FF] transition-colors duration-300 group cursor-pointer">
+                    </Link>
+                    <Link href="/contact" className="flex items-center gap-3 text-[#9CA3AF] hover:text-[#7000FF] transition-colors duration-300 group cursor-pointer">
                         <div className="w-10 h-10 rounded-xl bg-[#111116] border border-white/10 flex items-center justify-center group-hover:border-[#7000FF]/30 transition-colors shadow-lg">
                             <svg className="w-5 h-5 text-current" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
                         </div>
                         <span className="font-sans font-bold text-sm tracking-wide">Hospitality Growth Awards</span>
-                    </a>
-                    <a href="#" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 text-[#9CA3AF] hover:text-[#4ADE80] transition-colors duration-300 group cursor-pointer">
+                    </Link>
+                    <Link href="/contact" className="flex items-center gap-3 text-[#9CA3AF] hover:text-[#4ADE80] transition-colors duration-300 group cursor-pointer">
                         <div className="w-10 h-10 rounded-xl bg-[#111116] border border-white/10 flex items-center justify-center group-hover:border-[#4ADE80]/30 transition-colors shadow-lg">
                             <svg className="w-5 h-5 text-current" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
                         </div>
                         <span className="font-sans font-bold text-sm tracking-wide">Trusted by Restaurant Brands</span>
-                    </a>
+                    </Link>
                 </section>
 
                 {/* Section 4 — Bottom Legal Bar */}
@@ -236,8 +236,8 @@ export default function Footer({ globalSettings }: { globalSettings?: any }) {
 
                     {/* Right */}
                     <div className="flex gap-6 text-sm text-gray-500 justify-center md:justify-end">
-                        <Link className="hover:text-white transition-colors" href="/privacy">Privacy Policy</Link>
-                        <Link className="hover:text-white transition-colors" href="/terms">Terms of Service</Link>
+                        <Link className="hover:text-white transition-colors" href="/contact">Privacy Policy</Link>
+                        <Link className="hover:text-white transition-colors" href="/contact">Terms of Service</Link>
                     </div>
                 </section>
             </div>
